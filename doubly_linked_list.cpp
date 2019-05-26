@@ -1,5 +1,5 @@
 #include <iostream>
-
+/*Двунаправленный список: векторная и списковая реализаций*/
 using namespace std;
 
 const int N=20; //размер дека
