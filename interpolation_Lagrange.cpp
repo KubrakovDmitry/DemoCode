@@ -9,23 +9,23 @@ int main() {
 	double X;		
 	double Xo = 3*M_PI/16;
 	double MX[4];
-	double eest;//оценка погрешности
+	double eest;//Г®Г¶ГҐГ­ГЄГ  ГЇГ®ГЈГ°ГҐГёГ­Г®Г±ГІГЁ
 	MX[0] = 0;
 	MX[1] = M_PI/8;
 	MX[2] = M_PI/4;
 	MX[3] = 3*M_PI;
 	
-	cout << " Интерполяционный многочлен Лагранжа " << endl;
-	cout << " Начало " << endl;
-	double L3; //многочлен Лагранжа
-	double MFi[4];//значения функции
-	double WSht[4];//амега штрих
-	double D[4];//частное функции и амеги штрих
+	cout << " Г€Г­ГІГҐГ°ГЇГ®Г«ГїГ¶ГЁГ®Г­Г­Г»Г© Г¬Г­Г®ГЈГ®Г·Г«ГҐГ­ Г‹Г ГЈГ°Г Г­Г¦Г  " << endl;
+	cout << " ГЌГ Г·Г Г«Г® " << endl;
+	double L3; //Г¬Г­Г®ГЈГ®Г·Г«ГҐГ­ Г‹Г ГЈГ°Г Г­Г¦Г 
+	double MFi[4];//Г§Г­Г Г·ГҐГ­ГЁГї ГґГіГ­ГЄГ¶ГЁГЁ
+	double WSht[4];//Г Г¬ГҐГЈГ  ГёГІГ°ГЁГµ
+	double D[4];//Г·Г Г±ГІГ­Г®ГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГЁ Г Г¬ГҐГЈГЁ ГёГІГ°ГЁГµ
 	double RL[4];
 	void funFi(double MX[4], double MFi[4]);
 	void funWSht(double MX[4], double WSht[4]);
-	void funFiDivWSht(double WSht[4], double D[4], double MFi[4]); // частная производная
-	double Epselan_of_X(double X, double MX[4]);//вычисление оценки погрешности интерполяции
+	void funFiDivWSht(double WSht[4], double D[4], double MFi[4]); // Г·Г Г±ГІГ­Г Гї ГЇГ°Г®ГЁГ§ГўГ®Г¤Г­Г Гї
+	double Epselan_of_X(double X, double MX[4]);//ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГҐ Г®Г¶ГҐГ­ГЄГЁ ГЇГ®ГЈГ°ГҐГёГ­Г®Г±ГІГЁ ГЁГ­ГІГҐГ°ГЇГ®Г«ГїГ¶ГЁГЁ
 	
 	funFi(MX, MFi);
 	funWSht(MX, WSht);
@@ -56,21 +56,21 @@ int main() {
 	cout << " tg(X)= " << tan(X) << endl;
 	cout << " Result= " << Result << endl;
 	int J = 0;
-	if(Result<eest)//сравнение оценки с погрешностью
+	if(Result<eest)//Г±Г°Г ГўГ­ГҐГ­ГЁГҐ Г®Г¶ГҐГ­ГЄГЁ Г± ГЇГ®ГЈГ°ГҐГёГ­Г®Г±ГІГјГѕ
 	{
 		J=1;
 		cout << " J =" << J << endl;
-		cout << " Погрешность допускается точность " <<  endl;
+		cout << " ГЏГ®ГЈГ°ГҐГёГ­Г®Г±ГІГј Г¤Г®ГЇГіГ±ГЄГ ГҐГІГ±Гї ГІГ®Г·Г­Г®Г±ГІГј " <<  endl;
 	}
 	else{
 		cout << " J =" << J << endl;
 	}
-	cout << " Конец " << endl << endl;
-	cout << " Интерполяционный многочлен Ньютона " << endl;
-	cout << " Начало " << endl;	
-	double Fx0x1(double X0, double X1);//разделённая разность 1-го порядка
-	double Fx0x1x2(double X0, double X1, double X2);//разделённая разность 2-го порядка
-	double Fx0x1x2X3(double X0, double X1, double X2, double X3);//разделённая разность 3-го порядка
+	cout << " ГЉГ®Г­ГҐГ¶ " << endl << endl;
+	cout << " Г€Г­ГІГҐГ°ГЇГ®Г«ГїГ¶ГЁГ®Г­Г­Г»Г© Г¬Г­Г®ГЈГ®Г·Г«ГҐГ­ ГЌГјГѕГІГ®Г­Г  " << endl;
+	cout << " ГЌГ Г·Г Г«Г® " << endl;	
+	double Fx0x1(double X0, double X1);//Г°Г Г§Г¤ГҐГ«ВёГ­Г­Г Гї Г°Г Г§Г­Г®Г±ГІГј 1-ГЈГ® ГЇГ®Г°ГїГ¤ГЄГ 
+	double Fx0x1x2(double X0, double X1, double X2);//Г°Г Г§Г¤ГҐГ«ВёГ­Г­Г Гї Г°Г Г§Г­Г®Г±ГІГј 2-ГЈГ® ГЇГ®Г°ГїГ¤ГЄГ 
+	double Fx0x1x2X3(double X0, double X1, double X2, double X3);//Г°Г Г§Г¤ГҐГ«ВёГ­Г­Г Гї Г°Г Г§Г­Г®Г±ГІГј 3-ГЈГ® ГЇГ®Г°ГїГ¤ГЄГ 
 	double p1 = (X-MX[0])*Fx0x1(MX[0],MX[1]);
 	cout << " p1 = " << p1 << endl;
 	double p2 = (X-MX[0])*(X-MX[1])*(Fx0x1x2(MX[0],MX[1],MX[2]));
@@ -82,20 +82,20 @@ int main() {
 	double P3 = tan(MX[0])+p1+p2+p3+p4;
 	cout << " P3= " << P3 << endl;
 	cout << " Result= " << fabs(P3-tan(X)) << endl;
-	if(Result<eest)//сравнение оценки с погрешностью
+	if(Result<eest)//Г±Г°Г ГўГ­ГҐГ­ГЁГҐ Г®Г¶ГҐГ­ГЄГЁ Г± ГЇГ®ГЈГ°ГҐГёГ­Г®Г±ГІГјГѕ
 	{
 		J=1;
 		cout << " J =" << J << endl;
-		cout << " Погрешность допускается точность " <<  endl;
+		cout << " ГЏГ®ГЈГ°ГҐГёГ­Г®Г±ГІГј Г¤Г®ГЇГіГ±ГЄГ ГҐГІГ±Гї ГІГ®Г·Г­Г®Г±ГІГј " <<  endl;
 	}
 	else{
 		cout << " J =" << J << endl;
 	}
-	cout << " Конец " << endl;	
+	cout << " ГЉГ®Г­ГҐГ¶ " << endl;	
 	return 0;
 } 
-// Процедуры  
-// для Лагранжа
+// ГЏГ°Г®Г¶ГҐГ¤ГіГ°Г»  
+// Г¤Г«Гї Г‹Г ГЈГ°Г Г­Г¦Г 
 void funFi(double MX[4], double MFi[4])
 {
 	for(int i =0; i<4; i++){
@@ -125,7 +125,7 @@ void funFiDivWSht(double WSht[4], double D[4], double MFi[4])
 	return ;
 }
 
-//для Ньютона
+//Г¤Г«Гї ГЌГјГѕГІГ®Г­Г 
 double Fx0x1(double X0, double X1)
 {
 	return((ctan(X0)-tan(X1))/(X0-X1));
@@ -141,16 +141,16 @@ double Fx0x1x2X3(double X0, double X1, double X2, double X3)
 	return((Fx0x1x2(X0,X1,X2)-Fx0x1x2(X1,X2,X3))/(X0-X3));
 }
 
-double Epselan_of_X(double X, double MX[4])//вычисление оценки погрешности интерполяции
+double Epselan_of_X(double X, double MX[4])//ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГҐ Г®Г¶ГҐГ­ГЄГЁ ГЇГ®ГЈГ°ГҐГёГ­Г®Г±ГІГЁ ГЁГ­ГІГҐГ°ГЇГ®Г«ГїГ¶ГЁГЁ
 {
-	double dofnl_5 = 0; //производная пятого порядка(для логарима он равне 1/pow(MX[i], 5);)
+	double dofnl_5 = 0; //ГЇГ°Г®ГЁГ§ГўГ®Г¤Г­Г Гї ГЇГїГІГ®ГЈГ® ГЇГ®Г°ГїГ¤ГЄГ (Г¤Г«Гї Г«Г®ГЈГ Г°ГЁГ¬Г  Г®Г­ Г°Г ГўГ­ГҐ 1/pow(MX[i], 5);)
 	double k;
 	int res=1;
 	double amega;
-	for(int i= 0; i<4; i++)//поиск максимального значения модуля производной 
+	for(int i= 0; i<4; i++)//ГЇГ®ГЁГ±ГЄ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® Г§Г­Г Г·ГҐГ­ГЁГї Г¬Г®Г¤ГіГ«Гї ГЇГ°Г®ГЁГ§ГўГ®Г¤Г­Г®Г© 
 	{
 		k = 16/pow(cos(MX[i]), 2)+120*pow(sin(MX[i]),2)/pow((cos(MX[i])),6);
-		if(dofnl_5 < fabs(k))//если текущая макс. произв. меньше новой
+		if(dofnl_5 < fabs(k))//ГҐГ±Г«ГЁ ГІГҐГЄГіГ№Г Гї Г¬Г ГЄГ±. ГЇГ°Г®ГЁГ§Гў. Г¬ГҐГ­ГјГёГҐ Г­Г®ГўГ®Г©
 		{
 			dofnl_5 = fabs(k);
 		}
@@ -159,7 +159,7 @@ double Epselan_of_X(double X, double MX[4])//вычисление оценки погрешности интер
 //		cout << " dofnl_5= " << dofnl_5 << endl;
 	}
 	cout << " dofnl_5= " << dofnl_5 << endl;
-	for(int i = 1; i <= 5; i++ )//факториал
+	for(int i = 1; i <= 5; i++ )//ГґГ ГЄГІГ®Г°ГЁГ Г«
 	{
 		res = res * i;
 	}
