@@ -1,0 +1,86 @@
+Form1.cs
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Numerics;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp6
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+            Double a = 0;
+            Double b = 10;
+            Double h = 0.1;
+            Double s = a;
+            //Вычисляем модуль синуса и спроим график
+            while (s <= b)
+            {
+                chart1.Series[0].Points.AddXY(s, Math.Abs(Math.Sin(s)));
+                s += h;
+            }
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+            Double a = 0;                                  //Левая граница отрезка
+            Double b = 10;                                 //Правая граница отрезов
+            Double h = 0.1;
+            Double s = a;
+            Int32 n = 0;
+            List<Int32> N = new List<Int32>();
+            List<Double> DFV = new List<Double>();          //Список значений дискретной функции
+            List<Complex> CDFV = new List<Complex>();       //Список комплексных выходных значений 
+            //Дискретизация функции(вычисляем модуль синуса)
+            while (s <= b)
+            {
+                DFV.Add(Math.Abs(Math.Sin(s)));
+                s += h;
+                N.Add(n);
+                n++;
+            }
+            int counter = 0;
+            Int32 j = DFV.Count;
+            //Преобразование входных значений
+            while (counter < DFV.Count)
+            {
+                CDFV.Add(Transformation(DFV, j));
+                counter++;
+                j--;
+            }
+
+            counter = 0;
+            //Построение графика функций
+            while (counter < DFV.Count)
+            {
+                chart2.Series[0].Points.AddXY(counter, CDFV[counter].Imaginary);
+                chart3.Series[0].Points.AddXY(counter, CDFV[counter].Real);
+                counter++;
+            }
+        }
+        static Complex Transformation(List<Double> DFV, int n)
+        {
+            Complex T = new Complex(0.0, 0.0);
+            for (int i = DFV.Count - 1; i > 0; --i)
+            {
+                Complex c = new Complex(DFV[i] * Math.Cos(2 * Math.PI * i * n / DFV.Count), DFV[i] * Math.Sin(2 * Math.PI * i * n / DFV.Count));
+                T += Complex.Conjugate(c);
+            }
+            return T;
+        }
+
+    }
+}
