@@ -1,3 +1,4 @@
+# Дисктретное преобразование Фурье
 import time
 #from datetime import time
 import math
