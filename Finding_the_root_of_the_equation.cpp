@@ -6,7 +6,7 @@
 #include <fstream>
 
 using namespace std;
-
+/*Поиск корня уравнения методами хорд, касательных, деления отрезка попалам, простых итераций*/
 long double Xb = 0 , Xe = 0;
 long double Epsel = 0.01;
 int countSteps = 0;
@@ -26,8 +26,6 @@ int MD( long double Xb, long double Xe, long double Epsel);			//Метод хо�
 int MN( long double Xb, long double Xe, long double Epsel);			//Метод касательных
 int Mm( long double Xb, long double Xe, long double Epsel);			//Метод деления отрезка попалам
 int Mi( long double Xb, long double Xe, long double Epsel);			//Метод простых итераций
-//long double qroot3(long double val, long double Epsel); 				//вычисление кубического корня
-
 
 //Файл результатов вычислений и процедура записи в него
 FILE *txtFile;
